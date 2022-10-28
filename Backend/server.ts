@@ -1,4 +1,5 @@
 import { Request, Response, Application } from "express";
+// @ts-ignore
 import express from "express";
 import { Attempt } from "./attempt";
 
