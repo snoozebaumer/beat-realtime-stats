@@ -7,8 +7,10 @@ html {
 body {
     width: 100%;
     margin-inline: auto;
-    text-align: center;
     font-size: 1.3em;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 header {
