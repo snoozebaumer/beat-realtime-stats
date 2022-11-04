@@ -10,12 +10,65 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="vue.js"></script>
+    <script src="https://kit.fontawesome.com/699538b057.js" crossorigin="anonymous"></script>
+
     <title>Beat</title>
 </head>
 
 <body>
-    <p>Beat says</p>
-    <h1>Hello World</h1>
+    <header class="flex-container-inline space-between">
+        <img src="./assets/logo.png" alt="logo serenity" class="logo" />
+    </header>
+
+    <main class="flex-container-inline equal-children">
+        <img src="./assets/skizze.png" alt="situation" class="situation" />
+        <div class="info flex-container-block space-around no-wrap">
+            <p class="status">in Betrieb</p>
+            <div class="time">
+                <p>Aktuelle Laufzeit:</p>
+                02:34
+            </div>
+            <div class="articles flex-container-inline equal-children no-wrap">
+                <div class="article">
+                    <p class="article-name">PET-Deckel</p>
+                    <div class="article-circle red">
+                        22
+                    </div>
+                </div>
+                <div class="article">
+                    <p class="article-name">Zigaretten</p>
+                    <div class="article-circle green">
+                        69
+                    </div>
+                </div>
+            </div>
+            <div class="articles flex-container-inline equal-children no-wrap">
+                <div class="article">
+                    <p class="article-name">Blech-Deckel</p>
+                    <div class="article-circle blue">
+                        66
+                    </div>
+                </div>
+                <div class="article">
+                    <p class="article-name">Wertsachen</p>
+                    <div class="flex-container-block">
+                        <div class="valuable flex-container-inline no-wrap">
+                            <i class="valuable-icon fa-solid fa-key"></i>
+                            <span class="valuable-amount">1</span>
+                        </div>
+                        <div class="valuable flex-container-inline no-wrap">
+                            <i class="valuable-icon fa-solid fa-coins"></i>
+                            <span class="valuable-amount">1</span>
+                        </div>
+                        <div class="valuable flex-container-inline no-wrap">
+                            <i class="valuable-icon fa-solid fa-ring"></i>
+                            <span class="valuable-amount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
