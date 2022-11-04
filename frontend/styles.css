@@ -3,3 +3,105 @@ html {
     background: #eee;
     color: #111;
 }
+
+body {
+    width: 100%;
+    margin-inline: auto;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+header {
+    padding: 0 1em 1em;
+}
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
+
+/* COLORS */
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}
+
+
+/* FLEX */
+
+.flex-container-inline {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.flex-container-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+}
+
+.equal-children>* {
+    flex: 1;
+    width: 0;
+}
+
+.no-wrap {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    min-width: fit-content;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+
+/* CONTENT */
+
+.logo {
+    max-height: 100px;
+}
+
+.situation {
+    min-width: 350px;
+}
+
+.info {
+    min-width: 300px;
+}
+
+.article {
+    min-width: fit-content;
+}
+
+.article-name {
+    margin-block: 1em 0.5em;
+}
+
+.article-circle {
+    width: fit-content;
+    margin-inline: auto;
+    padding: 1em;
+    font-weight: bold;
+    border: solid 5px;
+    border-radius: 50%;
+}
+
+.valuable-icon {
+    font-size: 1.5em;
+    color: gold;
+    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+}
