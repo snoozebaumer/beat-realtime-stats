@@ -24,29 +24,27 @@ export class Run {
             password: "password",
             database: "beat"
         });
-    }
-
-    async save(): Promise<boolean> {
-        let success = false;
 
         this.connection.connect(function (error: Error) {
             if (error) {
                 throw error;
             }
         });
+    }
 
-        let sql: string = `INSERT INTO runs
-                           (StartDateTime, EndDateTime, Is_Running, Bottlecap_Amount, Cigarette_Amount,
-                            Plasticcap_Amount, Key_Amount, Coin_Amount, Ring_Amount)
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`;
+    async save(): Promise<boolean> {
+        let success = false;
+
+        let sql: string = this.getSqlString();
 
         await this.executeInDb(sql, [this.startDateTime, this.endDateTime, this.isRunning, this.bottleCapAmount, this.cigaretteAmount,
             this.plasticCapAmount, this.keyAmount, this.coinAmount, this.ringAmount]).then((data: OkPacket) => {
-            this.id = data.insertId;
+            this.id = this.id > 0 ? this.id :  data.insertId;
             success = true;
+        }).catch((error) => {
+            console.log(error);
         });
 
-        this.connection.end();
         return success;
     }
 
@@ -60,5 +58,26 @@ export class Run {
                 }
             });
         })
+    }
+
+    getSqlString(): string {
+        if (this.endDateTime) {
+            return `UPDATE runs
+                    SET StartDateTime=?,
+                        EndDateTime=?,
+                        Is_Running=?,
+                        Bottlecap_Amount=?,
+                        Cigarette_Amount=?,
+                        Plasticcap_Amount=?,
+                        Key_Amount=?,
+                        Coin_Amount=?,
+                        Ring_Amount=?
+                    WHERE Id =` + this.id + `;`;
+        } else {
+            return `INSERT INTO runs
+                    (StartDateTime, EndDateTime, Is_Running, Bottlecap_Amount, Cigarette_Amount,
+                     Plasticcap_Amount, Key_Amount, Coin_Amount, Ring_Amount)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`;
+        }
     }
 }
