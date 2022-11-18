@@ -1,7 +1,6 @@
-import {Request, Response, Application} from "express";
 // @ts-ignore
-import express from "express";
-import {Run} from "./run";
+import express, {Application, Request, Response} from "express";
+import {GarbageType, Run} from "./run";
 import * as path from "path";
 
 const PORT = 3000;
@@ -60,6 +59,30 @@ APP.get("/stop", (req: Request, res: Response): void => {
         if (success) {
             res.status(200).json({
                 message: "Run " + run.id + " stopped"
+            });
+        } else {
+            res.status(500).json({
+                message: "Something went wrong"
+            });
+        }
+    });
+});
+
+APP.get("/foundObject/:id", (req: Request, res: Response): void => {
+    if (!run || !run.isRunning) {
+        res.status(409).json({
+            message: "Run hasn't been started"
+        });
+        return;
+    }
+
+    let garbage: GarbageType = parseInt(req.params.id);
+    run.addGarbage(garbage);
+
+    run.save().then((success) => {
+        if (success) {
+            res.status(200).json({
+                message: "Garbage added"
             });
         } else {
             res.status(500).json({

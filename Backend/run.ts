@@ -1,6 +1,15 @@
 import * as mysql from "mysql";
 import {Connection, OkPacket} from "mysql";
 
+export enum GarbageType {
+    BOTTLECAP = 0,
+    CIGARETTE = 1,
+    PLASTICCAP = 2,
+    KEY = 3,
+    COIN = 4,
+    RING = 5
+}
+
 export class Run {
     id: number = 0;
     startDateTime: Date;
@@ -39,7 +48,7 @@ export class Run {
 
         await this.executeInDb(sql, [this.startDateTime, this.endDateTime, this.isRunning, this.bottleCapAmount, this.cigaretteAmount,
             this.plasticCapAmount, this.keyAmount, this.coinAmount, this.ringAmount]).then((data: OkPacket) => {
-            this.id = this.id > 0 ? this.id :  data.insertId;
+            this.id = this.id > 0 ? this.id : data.insertId;
             success = true;
         }).catch((error) => {
             console.log(error);
@@ -61,7 +70,7 @@ export class Run {
     }
 
     getSqlString(): string {
-        if (this.endDateTime) {
+        if (this.id > 0) {
             return `UPDATE runs
                     SET StartDateTime=?,
                         EndDateTime=?,
@@ -80,4 +89,28 @@ export class Run {
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);`;
         }
     }
+
+    addGarbage(garbage: GarbageType): void {
+        switch (garbage) {
+            case GarbageType.BOTTLECAP:
+                this.bottleCapAmount++;
+                break;
+            case GarbageType.CIGARETTE:
+                this.cigaretteAmount++;
+                break;
+            case GarbageType.PLASTICCAP:
+                this.plasticCapAmount++;
+                break;
+            case GarbageType.KEY:
+                this.keyAmount++;
+                break;
+            case GarbageType.COIN:
+                this.coinAmount++;
+                break;
+            case GarbageType.RING:
+                this.ringAmount++;
+                break;
+        }
+    }
+
 }
