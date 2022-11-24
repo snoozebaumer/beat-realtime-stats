@@ -15,12 +15,12 @@ export class Run {
     startDateTime: Date;
     endDateTime: Date | null = null;
     isRunning: boolean;
-    bottleCapAmount: number = 0;
-    cigaretteAmount: number = 0;
-    plasticCapAmount: number = 0;
-    keyAmount: number = 0;
-    coinAmount: number = 0;
-    ringAmount: number = 0;
+    private bottleCapAmount: number = 0;
+    private cigaretteAmount: number = 0;
+    private plasticCapAmount: number = 0;
+    private keyAmount: number = 0;
+    private coinAmount: number = 0;
+    private ringAmount: number = 0;
     private connection: Connection;
 
 
