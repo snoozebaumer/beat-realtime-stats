@@ -21,7 +21,7 @@ export class Run {
     keyAmount: number = 0;
     coinAmount: number = 0;
     ringAmount: number = 0;
-    connection: Connection;
+    private connection: Connection;
 
 
     constructor() {
@@ -57,7 +57,7 @@ export class Run {
         return success;
     }
 
-    async executeInDb(sql: string, values: Array<any>): Promise<OkPacket> {
+    private async executeInDb(sql: string, values: Array<any>): Promise<OkPacket> {
         return new Promise<OkPacket>((resolve, reject) => {
             this.connection.query(sql, values, function (err: any, data: OkPacket) {
                 if (err) {
@@ -69,7 +69,7 @@ export class Run {
         })
     }
 
-    getSqlString(): string {
+    private getSqlString(): string {
         if (this.id > 0) {
             return `UPDATE runs
                     SET StartDateTime=?,
