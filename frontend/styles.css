@@ -39,7 +39,12 @@ main {
 }
 
 
-/* FLEX */
+/* LAYOUT */
+
+.main-container {
+    min-width: 350px;
+    max-width: calc(calc(754/1394)*85vh);
+}
 
 .flex-container-inline {
     display: flex;
@@ -78,12 +83,10 @@ main {
 }
 
 .situation {
-    min-width: 350px;
+    margin: 0 -25px -50px 25px;
 }
 
-.info {
-    min-width: 300px;
-}
+.info {}
 
 .article {
     min-width: fit-content;
