@@ -1,3 +1,5 @@
+/* GENERAL */
+
 html {
     min-height: 100%;
     background: #eee;
@@ -9,18 +11,16 @@ body {
     margin-inline: auto;
     font-size: 1.3em;
     text-align: center;
-    font-family: 'Inter', sans-serif;
-    font-family: 'Rubik', sans-serif;
+    font-family: "Inter", sans-serif;
+    font-family: "Rubik", sans-serif;
+}
+
+h1 {
+    margin-block: 0;
 }
 
 header {
     padding: 0 1em 1em;
-}
-
-main {
-    width: 100%;
-    max-width: 1200px;
-    margin-inline: auto;
 }
 
 
@@ -41,9 +41,15 @@ main {
 
 /* LAYOUT */
 
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
 .main-container {
     min-width: 350px;
-    max-width: calc(calc(754/1394)*85vh);
+    max-width: calc(calc(754 / 1394) * 85vh);
 }
 
 .flex-container-inline {
