@@ -1,74 +1,85 @@
 <!DOCTYPE html>
 <html lang="de">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Rubik:wght@300&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100&family=Rubik:wght@300&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://kit.fontawesome.com/699538b057.js"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="vue.js"></script>
-    <script src="https://kit.fontawesome.com/699538b057.js" crossorigin="anonymous"></script>
 
     <title>Beat</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="flex-container-inline space-between no-wrap">
-        <img src="./assets/logo.png" alt="logo serenity" class="logo" />
-        <div class="flex-container-block">
-            <h1>BEAT</h1>
-            <span>Gruppe 29</span>
-        </div>
-        <img src="./assets/beat.svg" alt="logo beat" class="logo" />
+      <img src="./assets/logo.png" alt="logo serenity" class="logo" />
+      <div class="flex-container-block">
+        <h1>BEAT</h1>
+        <span>Gruppe 29</span>
+      </div>
+      <img src="./assets/beat.svg" alt="logo beat" class="logo" />
     </header>
 
-    <main class="flex-container-inline equal-children">
-        <img src="./assets/layout.png" alt="situation" class="situation main-container" />
+    <main>
+      <div class="flex-container-inline equal-children" id="app">
+        <img
+          src="./assets/layout.png"
+          alt="situation"
+          class="situation main-container"
+        />
         <div class="info main-container flex-container-block no-wrap">
-            <p class="status">in Betrieb</p>
-            <div class="time">
-                <p>Aktuelle Laufzeit:</p>
-                02:34
+          <p class="status">{{ status }}</p>
+          <div class="time">
+            <p>Aktuelle Laufzeit:</p>
+            02:34
+          </div>
+          <div class="articles flex-container-inline equal-children no-wrap">
+            <div class="article">
+              <p class="article-name">PET-Deckel</p>
+              <div class="article-circle red">22</div>
             </div>
-            <div class="articles flex-container-inline equal-children no-wrap">
-                <div class="article">
-                    <p class="article-name">PET-Deckel</p>
-                    <div class="article-circle red">22</div>
-                </div>
-                <div class="article">
-                    <p class="article-name">Zigaretten</p>
-                    <div class="article-circle green">69</div>
-                </div>
+            <div class="article">
+              <p class="article-name">Zigaretten</p>
+              <div class="article-circle green">69</div>
             </div>
-            <div class="articles flex-container-inline equal-children no-wrap">
-                <div class="article">
-                    <p class="article-name">Blech-Deckel</p>
-                    <div class="article-circle blue">66</div>
-                </div>
-                <div class="article">
-                    <p class="article-name">Wertsachen</p>
-                    <div class="flex-container-block">
-                        <div class="valuable flex-container-inline no-wrap">
-                            <i class="valuable-icon fa-solid fa-key"></i>
-                            <span class="valuable-amount">1</span>
-                        </div>
-                        <div class="valuable flex-container-inline no-wrap">
-                            <i class="valuable-icon fa-solid fa-coins"></i>
-                            <span class="valuable-amount">1</span>
-                        </div>
-                        <div class="valuable flex-container-inline no-wrap">
-                            <i class="valuable-icon fa-solid fa-ring"></i>
-                            <span class="valuable-amount">0</span>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="articles flex-container-inline equal-children no-wrap">
+            <div class="article">
+              <p class="article-name">Blech-Deckel</p>
+              <div class="article-circle blue">66</div>
             </div>
+            <div class="article">
+              <p class="article-name">Wertsachen</p>
+              <div class="flex-container-block">
+                <div class="valuable flex-container-inline no-wrap">
+                  <i class="valuable-icon fa-solid fa-key"></i>
+                  <span class="valuable-amount">1</span>
+                </div>
+                <div class="valuable flex-container-inline no-wrap">
+                  <i class="valuable-icon fa-solid fa-coins"></i>
+                  <span class="valuable-amount">1</span>
+                </div>
+                <div class="valuable flex-container-inline no-wrap">
+                  <i class="valuable-icon fa-solid fa-ring"></i>
+                  <span class="valuable-amount">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </main>
-</body>
+  </body>
 
+  <script src="vue.js"></script>
 </html>
