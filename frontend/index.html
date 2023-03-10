@@ -31,12 +31,10 @@
     </header>
 
     <main>
-      <div class="flex-container-inline equal-children" id="app">
-        <img
-          src="./assets/layout.png"
-          alt="situation"
-          class="situation main-container"
-        />
+      <div
+        class="flex-container-inline row-reverse equal-children overflow-x-clip"
+        id="app"
+      >
         <div class="info main-container flex-container-block no-wrap">
           <p
             class="status"
@@ -44,10 +42,12 @@
           >
             {{ run.status }}
           </p>
+
           <div class="time">
             <p>Aktuelle Laufzeit:</p>
             {{ run.currentRunTime }}
           </div>
+
           <div class="articles flex-container-inline equal-children no-wrap">
             <div class="article">
               <p class="article-name">PET-Deckel</p>
@@ -63,6 +63,7 @@
               <p class="article-name">Blech-Deckel</p>
               <div class="article-circle blue">{{ run.bottleCapAmount }}</div>
             </div>
+
             <div class="article">
               <p class="article-name">Wertsachen</p>
               <div class="flex-container-block">
@@ -82,6 +83,12 @@
             </div>
           </div>
         </div>
+
+        <img
+          src="./assets/layout.png"
+          alt="situation"
+          class="situation main-container"
+        />
       </div>
     </main>
   </body>

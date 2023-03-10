@@ -8,6 +8,7 @@ html {
 
 body {
   width: 100%;
+  min-width: 380px;
   margin-inline: auto;
   font-size: 1.3em;
   text-align: center;
@@ -50,8 +51,12 @@ main {
 }
 
 .main-container {
-  min-width: 350px;
+  min-width: 380px;
   max-width: calc(calc(754 / 1394) * 85vh);
+}
+
+.overflow-x-clip {
+  overflow-x: clip;
 }
 
 .flex-container-inline {
@@ -70,17 +75,19 @@ main {
 
 .equal-children > * {
   flex: 1;
-  width: 0;
 }
 
 .no-wrap {
   flex-wrap: nowrap;
   white-space: nowrap;
-  min-width: fit-content;
 }
 
 .space-between {
   justify-content: space-between;
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
 }
 
 /* CONTENT */
@@ -90,6 +97,7 @@ main {
 }
 
 .situation {
+  min-width: 380px;
   margin: 0 -25px -50px 25px;
 }
 
