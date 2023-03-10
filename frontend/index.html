@@ -38,7 +38,12 @@
           class="situation main-container"
         />
         <div class="info main-container flex-container-block no-wrap">
-          <p class="status">{{ run.status }}</p>
+          <p
+            class="status"
+            :class="{green: run.isRunning, grey: !run.isRunning}"
+          >
+            {{ run.status }}
+          </p>
           <div class="time">
             <p>Aktuelle Laufzeit:</p>
             {{ run.currentRunTime }}
