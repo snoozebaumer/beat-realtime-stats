@@ -102,7 +102,11 @@ main {
 }
 
 .article-circle {
-  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5em;
+  height: 1.5em;
   margin-inline: auto;
   padding: 1em;
   font-weight: bold;
