@@ -46,8 +46,8 @@
           <div class="time">
             <p>Aktuelle Laufzeit:</p>
             <span v-if="run.currentRuntimeInSeconds > 0"
-              >{{ run.currentRuntimeInSeconds % 60 }}:{{
-              Math.floor(run.currentRuntimeInSeconds / 60) }}</span
+              >{{ Math.floor(run.currentRuntimeInSeconds / 60) }}:{{
+               run.currentRuntimeInSeconds % 60}}</span
             ><span v-else>-:-</span>
           </div>
 

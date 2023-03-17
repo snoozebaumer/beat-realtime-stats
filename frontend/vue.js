@@ -45,8 +45,8 @@ var app = new Vue({
 });
 
 const setStopwatch = (startDateTime, endDateTime, isRunning) => {
-    const now = endDateTime || new Date()
-    const differenceInSeconds = (+now - +startDateTime) * 1000
+    const now = endDateTime ? new Date(endDateTime) : new Date()
+    const differenceInSeconds = Math.floor((+now - +new Date(startDateTime)) / 1000)
 
     data.run.currentRuntimeInSeconds = differenceInSeconds
 
