@@ -53,6 +53,7 @@ main {
 .main-container {
   min-width: 380px;
   max-width: calc(calc(754 / 1394) * 85vh);
+  padding-block: 1em;
 }
 
 .overflow-x-clip {
