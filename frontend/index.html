@@ -45,10 +45,12 @@
 
           <div class="time">
             <p>Aktuelle Laufzeit:</p>
-            <span v-if="run.currentRuntimeInSeconds > 0"
-              >{{ Math.floor(run.currentRuntimeInSeconds / 60) }}:{{
-               run.currentRuntimeInSeconds % 60}}</span
-            ><span v-else>-:-</span>
+            <span v-if="Math.floor(run.currentRuntimeInSeconds / 60) < 10"
+              >0</span
+            >{{ Math.floor(run.currentRuntimeInSeconds / 60) }}:<span
+              v-if="run.currentRuntimeInSeconds % 60 < 10"
+              >0</span
+            >{{ run.currentRuntimeInSeconds % 60}}
           </div>
 
           <div class="articles flex-container-inline equal-children no-wrap">
