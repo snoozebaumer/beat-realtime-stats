@@ -97,9 +97,8 @@ main {
   max-height: 100px;
 }
 
-.situation {
-  min-width: 380px;
-  margin: 0 -25px -50px 25px;
+.time {
+  font-variant-numeric: tabular-nums;
 }
 
 .article {
@@ -127,4 +126,9 @@ main {
   font-size: 1.5em;
   color: gold;
   text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
+}
+
+.situation {
+  min-width: 380px;
+  margin: 0 -25px -50px 25px;
 }

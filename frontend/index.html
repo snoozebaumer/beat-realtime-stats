@@ -43,14 +43,16 @@
             {{ run.status }}
           </p>
 
-          <div class="time">
+          <div>
             <p>Aktuelle Laufzeit:</p>
-            <span v-if="Math.floor(run.currentRuntimeInSeconds / 60) < 10"
-              >0</span
-            >{{ Math.floor(run.currentRuntimeInSeconds / 60) }}:<span
-              v-if="run.currentRuntimeInSeconds % 60 < 10"
-              >0</span
-            >{{ run.currentRuntimeInSeconds % 60}}
+            <div class="time">
+              <span v-if="Math.floor(run.currentRuntimeInSeconds / 60) < 10"
+                >0</span
+              >{{ Math.floor(run.currentRuntimeInSeconds / 60) }}:<span
+                v-if="run.currentRuntimeInSeconds % 60 < 10"
+                >0</span
+              >{{ run.currentRuntimeInSeconds % 60}}
+            </div>
           </div>
 
           <div class="articles flex-container-inline equal-children no-wrap">
