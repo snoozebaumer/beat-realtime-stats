@@ -4,8 +4,8 @@ const data = {
         id: null,
         startDateTime: null,
         endDateTime: null,
-        currentRunTime: '-',
         isRunning: false,
+        currentRuntimeInSeconds: 0,
         status: "Ausser Betrieb",
         bottleCapAmount: 0,
         cigaretteAmount: 0,
@@ -14,7 +14,7 @@ const data = {
         coinAmount: 0,
         ringAmount: 0,
     },
-
+    intervalId: null
 };
 
 var app = new Vue({
@@ -36,7 +36,24 @@ var app = new Vue({
                 ...eventData,
                 status: eventData.isRunning ? "In Betrieb" : "Ausser Betrieb",
             };
+
             data.run = newRun;
+
+            setStopwatch(eventData.startDateTime, eventData.endDateTime, eventData.isRunning)
         };
     },
 });
+
+const setStopwatch = (startDateTime, endDateTime, isRunning) => {
+    const now = endDateTime || new Date()
+    const differenceInSeconds = (+now - +startDateTime) * 1000
+
+    data.run.currentRuntimeInSeconds = differenceInSeconds
+
+    if (isRunning && !data.intervalId) {
+        data.intervalId = setInterval(() => data.run.currentRuntimeInSeconds++, 1000)
+    } else if (!isRunning) {
+        clearInterval(data.intervalId)
+        data.intervalId = null
+    }
+}
