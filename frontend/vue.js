@@ -23,7 +23,7 @@ var app = new Vue({
     created: () => {
         console.log("Connecting to server...");
 
-        data.connection = new WebSocket(`ws://${window.location.hostname}:443`);
+        data.connection = new WebSocket(`ws://${window.location.hostname}:80`);
 
         data.connection.onopen = (event) => {
             console.log("Successfully connected to server");

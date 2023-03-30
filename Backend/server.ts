@@ -1,15 +1,15 @@
 // @ts-ignore
 import express, { Application, json, Request, Response } from "express";
-import * as https from "https";
+import * as http from "http";
 import * as path from "path";
 import * as WebSocket from "ws";
 import { GarbageType, Run } from "./run";
 
-const PORT = 443;
+const PORT = 80;
 
 const APP: Application = express();
 
-const server = https.createServer(APP);
+const server = http.createServer(APP);
 
 const wss = new WebSocket.Server({ server });
 
@@ -114,5 +114,5 @@ APP.get("/foundObject/:id", (req: Request, res: Response): void => {
 });
 
 server.listen(PORT, (): void => {
-  console.log(`Server Running here -> https://localhost:${PORT}`);
+  console.log(`Server Running here -> http://localhost:${PORT}`);
 });
