@@ -5,7 +5,7 @@ import * as path from "path";
 import * as WebSocket from "ws";
 import { GarbageType, Run } from "./run";
 
-const PORT = 3000;
+const PORT = 8080;
 
 const APP: Application = express();
 
