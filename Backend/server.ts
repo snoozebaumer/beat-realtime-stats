@@ -1,13 +1,17 @@
 // @ts-ignore
+require('dotenv').config();
+// @ts-ignore
 import express, { Application, json, Request, Response } from "express";
 import * as http from "http";
 import * as path from "path";
 import * as WebSocket from "ws";
 import { GarbageType, Run } from "./run";
+import * as bodyParser from "body-parser";
 
 const PORT = 80;
 
 const APP: Application = express();
+APP.use(bodyParser.urlencoded({extended: true}))
 
 const server = http.createServer(APP);
 
@@ -33,7 +37,14 @@ APP.get("/", (req: Request, res: Response): void => {
   res.sendFile(path.resolve("../frontend/index.html"));
 });
 
-APP.get("/start", (req: Request, res: Response): void => {
+APP.post("/start", (req: Request, res: Response): void => {
+  if(!verifyAuthorization(req)) {
+    res.status(403).json({
+      message: "Missing authorization for this action."
+    });
+    return;
+  }
+
   if (run && run.isRunning) {
     res.status(409).json({
       message: "Run has already been started",
@@ -63,7 +74,14 @@ APP.get("/start", (req: Request, res: Response): void => {
   });
 });
 
-APP.get("/stop", (req: Request, res: Response): void => {
+APP.post("/stop", (req: Request, res: Response): void => {
+  if(!verifyAuthorization(req)) {
+    res.status(403).json({
+      message: "Missing authorization for this action."
+    });
+    return;
+  }
+
   if (!run || !run.isRunning) {
     res.status(409).json({
       message: "Run hasn't been started",
@@ -88,7 +106,14 @@ APP.get("/stop", (req: Request, res: Response): void => {
   });
 });
 
-APP.get("/foundObject/:id", (req: Request, res: Response): void => {
+APP.post("/amperage", (req: Request, res: Response): void => {
+  if(!verifyAuthorization(req)) {
+    res.status(403).json({
+      message: "Missing authorization for this action."
+    });
+    return;
+  }
+
   if (!run || !run.isRunning) {
     res.status(409).json({
       message: "Run hasn't been started",
@@ -96,7 +121,33 @@ APP.get("/foundObject/:id", (req: Request, res: Response): void => {
     return;
   }
 
-  let garbage: GarbageType = parseInt(req.params.id);
+  const voltage = 12;
+  let amperage: number = JSON.parse(req.body.amperage);
+  let wattage = amperage * voltage;
+  run.addWattage(wattage);
+  run.setCurrentWattage(wattage);
+  updateClients();
+  res.status(200).json({
+    message: "wattage " + wattage + " added"
+  });
+});
+
+APP.post("/foundObject", (req: Request, res: Response): void => {
+  if(!verifyAuthorization(req)) {
+    res.status(403).json({
+      message: "Missing authorization for this action."
+    });
+    return;
+  }
+
+  if (!run || !run.isRunning) {
+    res.status(409).json({
+      message: "Run hasn't been started",
+    });
+    return;
+  }
+
+  let garbage: GarbageType = JSON.parse(req.body.id);
   run.addGarbage(garbage);
 
   run.save().then((success) => {
@@ -112,6 +163,10 @@ APP.get("/foundObject/:id", (req: Request, res: Response): void => {
     }
   });
 });
+
+function verifyAuthorization(req: Request) {
+  return (req.headers.authorization === process.env.AUTHORIZATION_TOKEN)
+}
 
 server.listen(PORT, (): void => {
   console.log(`Server Running here -> http://localhost:${PORT}`);

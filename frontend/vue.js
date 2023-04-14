@@ -13,6 +13,8 @@ const data = {
         keyAmount: 0,
         coinAmount: 0,
         ringAmount: 0,
+        wattage: 0,
+        currentWattage: 0
     },
     timeoutId: null
 };
