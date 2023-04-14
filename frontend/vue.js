@@ -14,7 +14,7 @@ const data = {
         coinAmount: 0,
         ringAmount: 0,
     },
-    intervalId: null
+    timeoutId: null
 };
 
 var app = new Vue({
@@ -45,15 +45,26 @@ var app = new Vue({
 });
 
 const setStopwatch = (startDateTime, endDateTime, isRunning) => {
-    const now = endDateTime ? new Date(endDateTime) : new Date()
-    const differenceInSeconds = Math.floor((+now - +new Date(startDateTime)) / 1000)
+    const now = endDateTime ? new Date(endDateTime) : new Date();
+    const differenceInSeconds = Math.floor((+now - +new Date(startDateTime)) / 1000);
 
-    data.run.currentRuntimeInSeconds = differenceInSeconds
+    data.run.currentRuntimeInSeconds = differenceInSeconds;
 
-    if (isRunning && !data.intervalId) {
-        data.intervalId = setInterval(() => data.run.currentRuntimeInSeconds++, 1000)
+    if (isRunning && !data.timeoutId) {
+        let timeInMilliseconds = 0;
+
+        const instance = () => {
+            data.run.currentRuntimeInSeconds++;
+            timeInMilliseconds += 1000;
+
+            const differenceInMilliseconds = (+new Date() - +now) - timeInMilliseconds;
+
+            data.timeoutId = setTimeout(instance, (1000 - differenceInMilliseconds));
+        }
+
+        data.timeoutId = setTimeout(instance, 1000);
     } else if (!isRunning) {
-        clearInterval(data.intervalId)
-        data.intervalId = null
+        clearTimeout(data.timeoutId);
+        data.timeoutId = null;
     }
 }
