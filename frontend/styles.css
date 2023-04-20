@@ -54,6 +54,7 @@ main {
   min-width: 380px;
   max-width: calc(calc(754 / 1394) * 85vh);
   padding-block: 1em;
+  position: relative;
 }
 
 .overflow-x-clip {
@@ -131,4 +132,11 @@ main {
 .situation {
   min-width: 380px;
   margin: 0 -25px -50px 25px;
+}
+
+.garbage-popup {
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  z-index: 1000;
 }
