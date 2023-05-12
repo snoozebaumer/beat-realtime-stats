@@ -74,10 +74,6 @@ APP.post("/start", (req: Request, res: Response): void => {
   });
 });
 
-APP.get("/.well-known/acme-challenge/BAUYwVSQYaaKUCHMVDXjwxsrdjyx5pgyC0tSq4WdqIU", (req: Request, res: Response): void => {
-  res.sendFile(path.resolve("certificate.txt"));
-});
-
 APP.post("/stop", (req: Request, res: Response): void => {
   if(!verifyAuthorization(req)) {
     res.status(403).json({
