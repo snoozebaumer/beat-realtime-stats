@@ -1,4 +1,14 @@
 /* GENERAL */
+@font-face {
+  font-family: 'beat';
+  src: url('./assets/additional-icons/font/beat.eot?23528830');
+  src: url('./assets/additional-icons/font/beat.eot?23528830#iefix') format('embedded-opentype'),
+  url('./assets/additional-icons/font/beat.woff?23528830') format('woff'),
+  url('./assets/additional-icons/font/beat.ttf?23528830') format('truetype'),
+  url('./assets/additional-icons/font/beat.svg?23528830#beat') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
   min-height: 100%;
@@ -136,7 +146,15 @@ main {
 
 .garbage-popup {
   position: absolute;
-  top: 35%;
-  left: 30%;
+  top: 30%;
+  left: 35%;
   z-index: 1000;
+}
+
+.garbage-popup-icon {
+  font-size: 5em;
+}
+
+.garbage-popup-icon-fa {
+  font-size: 4em;
 }
