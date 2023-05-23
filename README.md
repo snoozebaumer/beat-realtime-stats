@@ -53,7 +53,9 @@ request. The token can be found in the .env file created during setup.
 * Stop run: `POST /stop`
   * used to inform the backend that the robot has stopped searching for recyclables. Stops the run
       and archives it in the database. Timer is stopped in frontend.
-* Pass Found Object : `POST /foundObject/:id`
+* Pass Found Object : `POST /foundObject`
+  * Request Body Parameters: 
+    * id: e.g. `{"id": 0}` - the id of the found object, for available ids see below
   * used to inform the backend that a recyclable object has been found. The following IDs for objects exist:
     * 0: beer bottle cap
     * 1: cigarette
@@ -62,7 +64,8 @@ request. The token can be found in the .env file created during setup.
     * 4: coin
     * 5: ring
 * Update amperage : `POST /amperage`
-  * Request Body: e.g. `{"amperage": 0.4}`
+  * Request Body Parameters: 
+    * amperage: e.g. `{"amperage": 0.4}` - the current amperage
   * Should be called every second. Takes the provided amperage and calculates current power 
   consumption with the constant voltage of 12 volts. The frontend is then updated, displaying the latest 
   and the overall power consumption in watt seconds.

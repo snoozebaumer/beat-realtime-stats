@@ -16,7 +16,10 @@ const data = {
         wattage: 0,
         currentWattage: 0
     },
-    timeoutId: null
+    timeoutId: null,
+    hasDifference: false,
+    diffAttribute: null,
+    garbageName: null
 };
 
 var app = new Vue({
@@ -39,7 +42,21 @@ var app = new Vue({
                 status: eventData.isRunning ? "In Betrieb" : "Ausser Betrieb",
             };
 
+            let diffAttributes = [];
+            if (data.run.id) {
+                diffAttributes = Object.keys(newRun).filter((key) => {
+                    if (key.endsWith("Amount")) {
+                        return newRun[key] !== data.run[key];
+                    }
+                    return false;
+                });
+            }
+
             data.run = newRun;
+
+            if (diffAttributes.length > 0) {
+                showGarbagePopup(diffAttributes[0]);
+            }
 
             setStopwatch(eventData.startDateTime, eventData.endDateTime, eventData.isRunning)
         };
@@ -70,3 +87,24 @@ const setStopwatch = (startDateTime, endDateTime, isRunning) => {
         data.timeoutId = null;
     }
 }
+
+const showGarbagePopup = (attribute) => {
+    const garbageNames = {
+        bottleCapAmount: "Kronkorken",
+        cigaretteAmount: "Zigarette",
+        plasticCapAmount: "PET-Deckel",
+        keyAmount: "Schlüssel",
+        coinAmount: "Münze",
+        ringAmount: "Ring"
+    };
+
+    data.hasDifference = true;
+    data.diffAttribute = attribute;
+    data.garbageName = garbageNames[attribute];
+
+    setTimeout(() => {
+        data.hasDifference = false;
+        data.diffAttribute = null;
+        data.garbageName = null;
+    }, 2500);
+};

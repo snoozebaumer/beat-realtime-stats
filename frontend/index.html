@@ -59,17 +59,17 @@
           <div class="articles flex-container-inline equal-children no-wrap">
             <div class="article">
               <p class="article-name">PET-Deckel</p>
-              <div class="article-circle red">{{ run.plasticCapAmount }}</div>
+              <div :class="{updated: hasDifference && diffAttribute === 'plasticCapAmount'}" class="article-circle red">{{ run.plasticCapAmount }}</div>
             </div>
             <div class="article">
               <p class="article-name">Zigaretten</p>
-              <div class="article-circle green">{{ run.cigaretteAmount }}</div>
+              <div :class="{updated: hasDifference && diffAttribute === 'cigaretteAmount'}" class="article-circle green">{{ run.cigaretteAmount }}</div>
             </div>
           </div>
           <div class="articles flex-container-inline equal-children no-wrap">
             <div class="article">
-              <p class="article-name">Blech-Deckel</p>
-              <div class="article-circle blue">{{ run.bottleCapAmount }}</div>
+              <p class="article-name">Kronkorken</p>
+              <div :class="{updated: hasDifference && diffAttribute === 'bottleCapAmount'}" class="article-circle blue">{{ run.bottleCapAmount }}</div>
             </div>
 
             <div class="article">
@@ -77,15 +77,15 @@
               <div class="flex-container-block">
                 <div class="valuable flex-container-inline no-wrap">
                   <i class="valuable-icon fa-solid fa-key"></i>
-                  <span class="valuable-amount">{{ run.keyAmount }}</span>
+                  <span :class="{updated: hasDifference && diffAttribute === 'keyAmount'}" class="valuable-amount">{{ run.keyAmount }}</span>
                 </div>
                 <div class="valuable flex-container-inline no-wrap">
                   <i class="valuable-icon fa-solid fa-coins"></i>
-                  <span class="valuable-amount">{{ run.coinAmount }}</span>
+                  <span :class="{updated: hasDifference && diffAttribute === 'coinAmount'}" class="valuable-amount">{{ run.coinAmount }}</span>
                 </div>
                 <div class="valuable flex-container-inline no-wrap">
                   <i class="valuable-icon fa-solid fa-ring"></i>
-                  <span class="valuable-amount">{{ run.ringAmount }}</span>
+                  <span :class="{updated: hasDifference && diffAttribute === 'ringAmount'}" class="valuable-amount">{{ run.ringAmount }}</span>
                 </div>
               </div>
             </div>
@@ -97,15 +97,15 @@
         </div>
         <div class="main-container">
           <div class="garbage-popup">
-            <i class="garbage-popup-icon icon-bottlecap">&#xe802;</i>
-            <i class="garbage-popup-icon icon-petbottlecap">&#xe800;</i>
-            <i class="garbage-popup-icon icon-beat">&#xe801;</i>
-            <i class="garbage-popup-icon-fa fa-solid fa-smoking"></i>
-            <i class="garbage-popup-icon-fa fa-solid fa-coins"></i>
-            <i class="garbage-popup-icon-fa fa-solid fa-key"></i>
-            <i class="garbage-popup-icon-fa fa-solid fa-ring"></i>
-            <div>Found something!</div>
+            <i class="garbage-popup-icon icon-bottlecap" v-show="hasDifference && diffAttribute === 'bottleCapAmount'">&#xe802;</i>
+            <i class="garbage-popup-icon icon-petbottlecap" v-show="hasDifference && diffAttribute === 'plasticCapAmount'">&#xe800;</i>
+            <i class="garbage-popup-icon-fa fa-solid fa-smoking" v-show="hasDifference && diffAttribute === 'cigaretteAmount'"></i>
+            <i class="garbage-popup-icon-fa fa-solid fa-coins" v-show="hasDifference && diffAttribute === 'coinAmount'"></i>
+            <i class="garbage-popup-icon-fa fa-solid fa-key" v-show="hasDifference && diffAttribute === 'keyAmount'"></i>
+            <i class="garbage-popup-icon-fa fa-solid fa-ring" v-show="hasDifference && diffAttribute === 'ringAmount'"></i>
+            <div class="garbage-popup-text" v-show="hasDifference">{{garbageName}} gefunden!</div>
           </div>
+
           <img class="situation main-container"
             src="./assets/layout.png"
             alt="situation"

@@ -131,6 +131,12 @@ main {
   font-weight: bold;
   border: solid 5px;
   border-radius: 50%;
+
+  transition: background-color 0.5s ease-in-out;
+}
+
+.updated {
+  background-color: yellow;
 }
 
 .valuable-icon {
@@ -139,15 +145,20 @@ main {
   text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
 }
 
+.valuable-amount {
+  transition: background-color 0.5s ease-in-out;
+}
+
 .situation {
   min-width: 380px;
   margin: 0 -25px -50px 25px;
 }
 
 .garbage-popup {
+  font-weight: bold;
   position: absolute;
   top: 30%;
-  left: 35%;
+  left: 37%;
   z-index: 1000;
 }
 
@@ -157,4 +168,9 @@ main {
 
 .garbage-popup-icon-fa {
   font-size: 4em;
+  margin-bottom: 0.5em;
+}
+
+.garbage-popup-text {
+  max-width: 6em;
 }
