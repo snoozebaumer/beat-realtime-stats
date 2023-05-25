@@ -82,7 +82,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 1em;
+  gap: 0.5em;
 }
 
 .equal-children > * {
@@ -175,7 +175,30 @@ main {
   max-width: 6em;
 }
 
+.wattage-block {
+  max-width: 60%;
+  margin: auto;
+}
+
+.wattage {
+  clear: both;
+}
+
 .average-wattage {
   font-size: 0.8em;
   color: #696969;
+}
+
+.wattage-label {
+  color: #696969;
+  font-size: 0.55em;
+  float: none;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }

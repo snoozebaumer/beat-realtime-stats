@@ -90,9 +90,12 @@
               </div>
             </div>
           </div>
-          <div>
+          <div class="wattage-block">
             <p>Verbrauch:</p>
-            <div>{{Math.round(run.wattage*100)/100}} W ({{Math.round(run.currentWattage*100)/100}} Ws)</div>
+            <div class="wattage-label">
+              <div class="left">Gesamt</div><div class="right">Momentan</div>
+            </div>
+            <div class="wattage">{{Math.round(run.wattage*100)/100}} W ({{Math.round(run.currentWattage*100)/100}} Ws)</div>
             <div class="average-wattage">Ø {{Math.round(run.currentRuntimeInSeconds > 0 ? run.wattage/run.currentRuntimeInSeconds*100 : 0)/100}} W</div>
           </div>
         </div>
