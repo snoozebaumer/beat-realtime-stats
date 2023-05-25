@@ -65,7 +65,10 @@ var app = new Vue({
 
 const setStopwatch = (startDateTime, endDateTime, isRunning) => {
     const now = endDateTime ? new Date(endDateTime) : new Date();
-    const differenceInSeconds = Math.floor((+now - +new Date(startDateTime)) / 1000);
+    let differenceInSeconds = Math.floor((+now - +new Date(startDateTime)) / 1000);
+
+    //fixed time synchronization problem where server time was in the past, might lead to problems if server time is in the future or js isn't running while run is first started
+    differenceInSeconds = differenceInSeconds > 0 ? differenceInSeconds : 0;
 
     data.run.currentRuntimeInSeconds = differenceInSeconds;
 

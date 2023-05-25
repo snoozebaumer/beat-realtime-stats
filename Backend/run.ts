@@ -137,7 +137,7 @@ export class Run {
     }
 
     setCurrentWattage(wattage: number) {
-        this.currentWattage += wattage;
+        this.currentWattage = wattage;
     }
 
     getClientData() {
