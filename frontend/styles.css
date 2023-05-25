@@ -174,3 +174,8 @@ main {
 .garbage-popup-text {
   max-width: 6em;
 }
+
+.average-wattage {
+  font-size: 0.8em;
+  color: #696969;
+}

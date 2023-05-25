@@ -92,7 +92,8 @@
           </div>
           <div>
             <p>Verbrauch:</p>
-            <div>{{Math.round(run.currentRuntimeInSeconds > 0 ? run.wattage/run.currentRuntimeInSeconds*100 : 0)/100}} W ({{Math.round(run.currentWattage*100)/100}} Ws)</div>
+            <div>{{Math.round(run.wattage*100)/100}} W ({{Math.round(run.currentWattage*100)/100}} Ws)</div>
+            <div class="average-wattage">Ø {{Math.round(run.currentRuntimeInSeconds > 0 ? run.wattage/run.currentRuntimeInSeconds*100 : 0)/100}} W</div>
           </div>
         </div>
         <div class="main-container">
