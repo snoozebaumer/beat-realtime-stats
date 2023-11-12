@@ -1,7 +1,9 @@
-# realtime-web
+# beat-realtime-stats
 
 ## Description
-Live-updating stats website as part of PREN lecture at HSLU, where a robot picks up various elements of recyclables.
+Live-updating stats website as part of PREN lecture at HSLU HS22/FS23, where various recyclables our robot "BEAT" picks up are tracked.
+
+!["BEAT pushes changes to the web application through a HTTP interface. The web application then pushes changes to all connected clients through a WS connection.](images/components.png)
 
 ## Setup
 1. In Backend, do
@@ -9,9 +11,9 @@ Live-updating stats website as part of PREN lecture at HSLU, where a robot picks
 npm install
 ```
 
-2. run the sql script at Backend/create_scripts/runs.sql
+2. run the sql script at backend/create_scripts/runs.sql in your local mysql installation
 
-3. Create a ".env" file in Backend and define the following environment variables:
+3. Create a ".env" file in backend and define the following environment variables (see backend/.env.sample):
 ```
 AUTHORIZATION_TOKEN=<token the robot will use for authentication>
 DB_HOST=<host name of the MySQL db, e.g. localhost>
@@ -21,7 +23,7 @@ DB_PASSWORD=<password of the db user>
 ```
 
 ## Usage
-Start web server in /Backend with
+Start web server in /backend with
 
 ```
 npm start
@@ -43,6 +45,8 @@ Open endpoints require no Authentication.
   * can be called from browser. Shows user interface.
 
 ### Endpoints that require Authentication
+
+> :warning: Keep in mind that this authentication method is in no way to be considered safe. This application didn't run publically, so SSL encryption through HTTPS and WSS wasn't available to us.
 
 Closed endpoints require a valid Token to be included in the authentication header of the
 request. The token can be found in the .env file created during setup.
