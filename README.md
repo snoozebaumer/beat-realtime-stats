@@ -1,9 +1,10 @@
 # beat-realtime-stats
+![Screenshot of BEAT web application](images/website_screenshot.png)
 
 ## Description
 Live-updating stats website as part of PREN lecture at HSLU HS22/FS23, where various recyclables our robot "BEAT" picks up are tracked.
 
-!["BEAT pushes changes to the web application through a HTTP interface. The web application then pushes changes to all connected clients through a WS connection.](images/components.png)
+![BEAT pushes changes to the web application through a HTTP interface. The web application then pushes changes to all connected clients through a WS connection.](images/components.png)
 
 ## Setup
 1. In Backend, do
